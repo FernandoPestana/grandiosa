@@ -1,0 +1,228 @@
+@use '/src/sass/fonts';
+@use '/src/sass/variables' as v;
+@use '/src/sass/mixins' as m;
+
+.productInfo {
+    display: flex;  
+    flex-flow: row wrap;  
+    max-width: 80em;    
+    margin: 5em 0;
+    hyphens: none;
+    &__container {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        &.isActive {
+            pointer-events: none;
+        }
+    }
+    &__img {
+        width: 80%;
+        &-container {
+            width: 50%;
+            display: flex;
+            justify-content: center;   
+            @include m.tablet {
+                width: 100%;
+            }         
+        }
+    }
+    &__info {
+        width: 50%;        
+        font-family: 'fakt pro';    
+        @include m.tablet {
+            width: 100%;
+            margin: 0 1rem;
+        }    
+    }
+    &__header {
+        border-bottom: 1px solid v.$gray400;
+        h2 {
+            color: v.$gray100;
+            margin: 1em 0 0 0;
+            font-size: v.$font-h2;
+        }
+        p {
+            font-size: v.$font-body;
+            margin: 1em 0 1.5em 0;
+            color: v.$gray200;
+            width: 90%;
+        }
+    }
+    &__footer {
+       
+        h3 {
+            color: v.$gray200;
+            margin: 2em 0 0 0;
+        }
+    }
+    &__use {
+        &-container {
+            display: flex;
+            justify-content: center; 
+        }
+        font-family: 'fakt pro';
+        color: v.$gray100;        
+        max-width: 80em;
+        width: 100%;
+        font-size: v.$font-body;
+        padding: 0 3em;
+        margin: 0 0 6em 0;        
+        @include m.movil {
+            margin: 0 1rem;
+            padding: 0;
+        }
+    }
+    &__btn-container {
+        position: relative;
+        font-size: v.$font-h6;        
+        width: 15em; 
+        display: flex;
+        justify-content: center;
+        margin: 1em 0;
+        padding: .3em;
+        @include m.movil {
+            background-color: #e7e7e7;
+            border-radius: .86em;
+            border: 1px solid v.$colorPrimary;
+            font-size: 1em;
+            color: v.$colorPrimary;
+            &:active {
+                background-color: v.$colorPrimary;
+                span {
+                    color: #e7e7e7;
+                }
+            }
+        } 
+        @include m.tablet {
+            background-color: #e7e7e7;
+            padding: .7em 0;
+            border-radius: .86em;
+            border: 1px solid v.$colorPrimary;
+            font-size: 1em;
+            color: v.$colorPrimary;
+            &:active {
+                background-color: v.$colorPrimary;
+                span {
+                    color: #e7e7e7;
+                }
+            }
+        } 
+        @include m.pc {
+            background-color: #e7e7e7;
+            padding: .7em 0;
+            border-radius: .86em;
+            border: 1px solid v.$colorPrimary;
+            font-size: 1em;
+            color: v.$colorPrimary;
+            &:active {
+                background-color: v.$colorPrimary;
+                span {
+                    color: #e7e7e7;
+                }
+            }
+        }
+    }
+}
+
+@media (hover: hover) {
+    
+.button2:hover {
+    span {
+        color: #e7e7e7;
+    }
+}
+.button2 {
+    cursor: pointer;   
+    background-color: lightgreen;    
+}
+
+                .button2--bestia {                    
+                    font-size: v.$font-body;                    
+                    background: none;  
+                    color: v.$colorPrimary;                                 
+                }
+                
+                .button2--bestia .button2__bg {
+                    top: 0;
+                    border: 2px solid v.$colorPrimary;
+                    left: 0;
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;                    
+                    background: #e7e7e7;
+                   border-radius: 0.85rem;
+                    overflow: hidden;
+                    transition: transform 0.4s cubic-bezier(0.1, 0, 0.3, 1);
+                }
+                
+                .button2--bestia:hover .button2__bg {
+                    transform: scale3d(1.06,1.05,1);                    
+                }
+                
+                .button2--bestia .button2__bg::before,
+                .button2--bestia .button2__bg::after {
+                    content: '';                    
+                    position: absolute;
+                    background: v.$colorPrimary;
+                }
+                
+                .button2--bestia .button2__bg::before {
+                    width: 110%;
+                    height: 0;
+                    padding-bottom: 110%;
+                    top: 50%;                    
+                    left: 50%; 
+                    border-radius: 50%;
+                    transform: translate3d(-50%,-50%,0) scale3d(0,0,1);
+                }
+                
+                .button2--bestia:hover .button2__bg::before {
+                    transition: transform 0.4s cubic-bezier(0.1, 0, 0.3, 1);
+                    transform: translate3d(-50%,-50%,0) scale3d(1,1,1);                    
+                }
+                
+                .button2--bestia .button2__bg::after {
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    opacity: 0;
+                    transition: opacity 0.3s;
+                }
+                
+                .button2--bestia:hover .button2__bg::after {
+                    opacity: 1;
+                    transition-duration: 0.01s;
+                    transition-delay: 0.3s;
+                }
+                
+                .button2--bestia span {
+                    display: block;
+                    position: relative;                                        
+                    padding: .2em;                                    
+                    &:hover {
+                        color: #e7e7e7;
+                    }                 
+                }
+}
+
+
+@media screen and (max-width:480px) {
+    .productInfo {
+        flex-flow: row wrap;        
+        margin: 1em;
+        &__img-container {
+            width: 100%;
+        }
+        &__info {
+            width: 100%;
+        }
+        &__btn-container {            
+            width: 100%;
+        }
+    }
+    .button2 {
+        padding: .5em;
+    }
+}         

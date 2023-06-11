@@ -1,0 +1,279 @@
+@use '/src/sass/variables' as v;
+@use '/src/sass/fonts';
+@use '/src/sass/mixins' as m;
+
+.minicart {    
+    &__sidebar {   
+        box-shadow: 0 0 0 100vw rgba(0, 0, 0, 0.05); 
+        background-color: #fff;                   
+        visibility: hidden;
+        opacity: 0;
+        transition: all ease-in .5s; 
+        position: fixed;
+        height: 100vh;
+        bottom: 0;
+        top: 0;
+        z-index: 2; 
+        right: 0;
+        width: 0vw;     
+        color: v.$gray100;           
+        &.isActive {                            
+            visibility: visible;                        
+            opacity: 1;
+            width: 25em;            
+            box-shadow: 0 0 0 100vw rgba(0, 0, 0, 0.3);              
+            @include m.movil {
+                width: 20em;
+                @include m.selector
+            } 
+        }
+    } 
+    &__title {
+        font-size: 2.5em;
+        &-p {
+            font-size: .7em;
+        }
+    }
+    &__info-btn-container {
+        position: relative;
+        margin: 0 3em;    
+        @include m.movil {
+            background-color: #e7e7e7;
+            border: 1px solid v.$colorPrimary;
+            border-radius: .86rem;  
+            padding: .8em 0;
+            color: v.$colorPrimary;
+            &:active {
+                background-color: v.$colorPrimary;
+                span {
+                    color: #e7e7e7;
+                }
+            }
+        }  
+    }
+    &__info {
+              
+        padding: 7em 0 2em 0;
+    }
+    &__full {
+        max-height: 400px;
+        overflow-y: auto;
+        @include m.movil{
+            max-height: 37em;
+        }
+    }
+    &__footer {                       
+        color: v.$gray100;
+        position: absolute;
+        bottom: 0em;
+        
+        @include m.movil {
+            bottom: 3em; 
+        }             
+        width: 100%;                  
+        border-top: 1px solid v.$gray300;
+        background-color: #fff;
+        &-content {
+            margin: 1rem 1rem 2rem 1rem;            
+        }
+        &-subtotal-container {
+            display: flex;
+            justify-content: space-between;
+            font-size: .8em;
+        }
+        p {
+            margin: 1em 0;
+            font-size: .9em;
+            hyphens: none;
+        }
+    }
+}
+
+
+               
+@media (hover: hover) {
+    .button6 {
+        cursor: pointer;
+    }
+    .button6:hover {
+        span {
+            color: #e7e7e7;
+        }
+    }
+    .button6--bestia {                    
+        font-size: v.$font-body;                    
+        background: none;  
+        color: v.$colorPrimary;                     
+    }
+    
+    .button6--bestia .button6__bg {
+        top: 0;
+        border: 2px solid v.$colorPrimary;
+        left: 0;
+        position: absolute;
+        width: 100%;
+        height: 100%;                    
+        background: #e7e7e7;
+        border-radius: 0.85rem;
+        overflow: hidden;
+        transition: transform 0.4s cubic-bezier(0.1, 0, 0.3, 1);
+    }
+    
+    .button6--bestia:hover .button6__bg {
+        transform: scale3d(1.06,1.05,1);                    
+    }
+    
+    .button6--bestia .button6__bg::before,
+    .button6--bestia .button6__bg::after {
+        content: '';                    
+        position: absolute;
+        background: v.$colorPrimary;
+    }
+    
+    .button6--bestia .button6__bg::before {
+        width: 110%;
+        height: 0;
+        padding-bottom: 110%;
+        top: 50%;                    
+        left: 50%;
+        border-radius: 50%;
+        transform: translate3d(-50%,-50%,0) scale3d(0,0,1);
+    }
+    
+    .button6--bestia:hover .button6__bg::before {
+        transition: transform 0.4s cubic-bezier(0.1, 0, 0.3, 1);
+        transform: translate3d(-50%,-50%,0) scale3d(1,1,1);                    
+    }
+    
+    .button6--bestia .button6__bg::after {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+    
+    .button6--bestia:hover .button6__bg::after {
+        opacity: 1;
+        transition-duration: 0.01s;
+        transition-delay: 0.3s;
+    }
+    
+    .button6--bestia span {
+        display: block;
+        position: relative;
+        padding: .7em 2em; 
+        &:hover {
+            color: #e7e7e7;
+        }                 
+    }
+
+}
+
+.minicart__footer-btn-container {
+    position: relative;        
+    display: flex;
+    justify-content: center;
+    span {
+        font-size: .7em;
+    }
+    @include m.movil {
+        background-color: #e7e7e7;
+        border-radius: .86rem;
+        color: v.$colorPrimary;
+        border: 1px solid v.$colorPrimary;
+        padding: .5em 0;    
+        &:active {
+            background-color: v.$colorPrimary;
+            span {
+                color: #e7e7e7;
+            }
+        }
+    }
+}
+
+
+
+
+@media (hover: hover) {
+    .button4 {
+        padding: .2em 0; 
+        cursor: pointer;   
+    }
+    .button4:hover {
+        span {
+            color: #fff;
+        }
+    }
+    
+    .button4--bestia {                    
+        font-size: v.$font-body;                    
+        background: none;  
+        color: v.$colorPrimary;                                 
+    }
+    
+    .button4--bestia .button4__bg {
+        top: 0;
+        border: 2px solid v.$colorPrimary;
+        left: 0;
+        position: absolute;
+        width: 100%;
+        height: 100%;                    
+        background: #e7e7e7;
+       border-radius: 0.85rem;
+        overflow: hidden;
+        transition: transform 0.4s cubic-bezier(0.1, 0, 0.3, 1);
+    }
+    
+    .button4--bestia:hover .button4__bg {
+        transform: scale3d(1.06,1.05,1);                    
+    }
+    
+    .button4--bestia .button4__bg::before,
+    .button4--bestia .button4__bg::after {
+        content: '';                    
+        position: absolute;
+        background: v.$colorPrimary;
+    }
+    
+    .button4--bestia .button4__bg::before {
+        width: 110%;
+        height: 0;
+        padding-bottom: 110%;
+        top: 50%;                    
+        left: 50%; 
+        border-radius: 50%;
+        transform: translate3d(-50%,-50%,0) scale3d(0,0,1);
+    }
+    
+    .button4--bestia:hover .button4__bg::before {
+        transition: transform 0.4s cubic-bezier(0.1, 0, 0.3, 1);
+        transform: translate3d(-50%,-50%,0) scale3d(1,1,1);                    
+    }
+    
+    .button4--bestia .button4__bg::after {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+    
+    .button4--bestia:hover .button4__bg::after {
+        opacity: 1;
+        transition-duration: 0.01s;
+        transition-delay: 0.3s;
+    }
+    
+    .button4--bestia span {
+        display: block;
+        position: relative;                                        
+        padding: .2em;                                    
+        &:hover {
+            color: #e7e7e7;
+        }                 
+    }
+  
+}

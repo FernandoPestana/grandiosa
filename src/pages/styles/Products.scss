@@ -1,0 +1,117 @@
+@use '/src/sass/variables' as v;
+@use '/src/sass/fonts';
+@use '/src/sass/mixins' as m;
+
+.products__container {
+    display: grid;
+    gap: 2em;          
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); 
+    @include m.pc {
+        grid-template-columns: repeat(auto-fill, minmax(8.6rem, 1fr));  
+    }          
+    &-content {        
+        padding: 0 2em;
+        width: 150%;
+    }
+}
+
+.products {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 80em;    
+    margin: 0 1rem 8em 1rem;
+    &__span {
+        font-size: 3em;
+        width: 100%;
+        text-align: center;
+    }
+    &__info-movil {
+        display: none;
+        @include m.selector;
+        @include m.movil {
+            display: flex;
+            justify-content: space-between; 
+            color: v.$gray400;           
+            & div {
+                color: v.$gray300;
+            }
+            padding: .8em 0 0 0;
+            div:active {
+                color: v.$colorPrimary;
+            }
+        }
+    }
+    &__principal {
+        display: flex;
+        justify-content: center;
+        &.isActive {
+            pointer-events: none;
+        }
+    }
+    &__title {        
+        padding: 2em 0 ;
+        span {
+            color: v.$colorBody;
+            font-size: v.$font-h2;
+            font-family: 'tenor sans';
+            
+        }
+    }
+    &__content {              
+        width: 100%;
+        display: flex;                        
+    }
+    &__info {        
+        width: 40%;
+        font-family: 'fakt pro';              
+        position: sticky;
+        height: 50vh;
+        top: 6.9em;           
+        &-quantity {
+            background-color: #fff;
+            height: 15%;
+            display: flex;
+            align-items: center;
+            color: v.$gray400;
+        }
+        &-sub {
+            color: v.$gray200;
+            margin: 1em 0;
+            font-size: v.$font-h5;
+            
+            &-content {  
+                border-bottom: 1px solid v.$gray600;              
+                padding: .7em 0;
+                gap: 1em;
+                width: 90%;
+                &:first-child {
+                    border-top: 1px solid v.$gray600;
+                    cursor: pointer;
+                    &:hover {
+                        color: v.$colorPrimary;
+                    }
+                }                
+            }
+        }
+    }
+}
+
+@media screen and (max-width:480px) {
+    .products{
+        margin: 0 1rem;
+        &__info {
+            display: none;
+        }
+        &__content {
+            flex-flow: row wrap;
+        }
+        &__container {            
+            grid-template-columns: repeat(auto-fill, minmax(7rem, 1fr)); 
+            &-content {                
+                margin: 1em 0 1em 0;
+                padding: 0;
+            }          
+        }
+    }
+}

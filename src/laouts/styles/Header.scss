@@ -1,0 +1,338 @@
+@use '/src/sass/fonts';
+@use '/src/sass/base';
+@use '/src/sass/variables' as v;
+@use '/src/sass/mixins' as m;
+
+
+.content {
+    display: flex;
+    justify-content: center; 
+    background-color: rgba(255, 255, 255, .37);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;  
+    backdrop-filter: blur(5px);
+    position: sticky;
+    top: 0;
+    z-index: 2;        
+    @include m.movil {
+        @include m.selector
+    }
+    @include m.tablet {
+        @include m.selector
+    }
+    @include m.pc {
+        @include m.selector
+    }
+}
+
+.header {
+    max-width: 80rem;
+    width: 100%;      
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid v.$gray600;
+    margin: 0 0 .5em 0;
+    padding: 1em 1rem 0 1rem;             
+    @include m.pc {
+        display: flex;
+        justify-content: space-between;                
+        padding: .5em 1rem;
+    }
+    @include m.tablet {
+        padding: 1rem;
+    }
+    &__utilities {               
+        margin: 1.5em 0 0 0;
+        padding: 0;        
+        color: v.$colorTitle; 
+        @include m.pc {            
+            height: 100%;
+            margin: 0;     
+            display: flex;   
+        }                   
+        &-container {
+            display: flex;
+            align-items: center; 
+            gap: 1.4em;                           
+        }
+        
+    }
+    &__button {                                         
+        &-container {            
+            display: none;
+            @include m.pc {                
+                display: flex;                                
+                font-size: 2em;
+                margin: 0 1em 0 0;
+                height: 100%;
+                padding: .8em 0 .5em 0;                
+            }           
+        }    
+    }
+    &__img-content {
+        @include m.pc {            
+            display: flex;
+            align-items: center;            
+        }
+    }
+}
+
+.nav {    
+    display: flex;
+    align-items: center;    
+    color: v.$gray200;
+    font-family: 'Fakt Pro'; 
+    font-weight: 500;          
+    &__tier-1 {
+        display: flex;
+        justify-content: space-between;
+        font-size: v.$font-h5;
+        letter-spacing: -1px; 
+        gap: 1em;
+        height: 100%;                              
+    }
+    &__tier-2-container {
+        position: absolute;
+        background-color: #fff;         
+        box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.15);             
+        top: calc(100% + 3px);
+        left: -1em;               
+        opacity: 0;               
+        visibility: hidden;
+        transition: all .5s ease;
+    }
+    &__tier-2-container.isActive {
+        opacity: 1;     
+        visibility: visible;
+    }
+    &__tier-2-content {                
+        padding: 0 1em .7em 0;
+        margin: 0 1em;
+    }
+    &__tier-2 {
+        cursor: pointer;
+        font-size: v.$font-link;
+        letter-spacing: 0;        
+    }   
+    &__item {
+        gap: 2em;
+        a.active {
+            color: v.$colorPrimary;
+        }
+    }
+    &__item-1 {
+        margin: .3em 0;
+        padding: .2em 0;
+        height: 100%;               
+    }   
+    &__link-1 {
+        position: relative; 
+        padding: .5em 0;
+        display: flex;
+        align-items: center;                
+        margin: 1em .4em;                
+        cursor: pointer;                                           
+        &:hover {
+            color: v.$colorPrimary;
+        }
+    }
+    &__link-2 {        
+        color: v.$colorTitle;
+        &:hover {
+            color: v.$colorPrimary;
+        }
+    }
+}
+
+.search {    
+    
+    
+    &__icon {        
+       cursor: pointer;
+       font-size: 1.55em;       
+       margin: .4em 0 0 0;
+       &:hover {
+        color: v.$colorPrimary;
+       }
+       &-close {
+         &:hover {
+            color: v.$colorPrimary;
+         }
+         cursor: pointer;
+       }
+    }
+}
+
+ .minicart {    
+    &__icon em {        
+        font-size: 1.9em;
+        cursor: pointer;           
+        &:hover {
+            color: v.$colorPrimary;
+        }
+    }
+    &__icon {
+        position: relative;
+    }
+    &__count {
+        background-color: v.$colorPrimary;
+        color: #fff;
+        border-radius: 50%;
+        font-size: .7em;
+        font-family: 'tenor sans';
+        position: absolute;
+        top: 0;
+        right: -3px;        
+        transform: translateY(-35%);        
+        text-align: center;        
+        height: 1.2em;
+        width: 1.2em;
+        opacity: 0;
+        transition: all ease-in .5s;
+        &.isActive {
+            opacity: 1;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+    &__entries {
+        background-color: #fff;        
+        color: v.$gray200;
+        min-width: 20em;
+    }
+    &__title {
+        font-family: 'Fakt Pro';        
+        font-size: v.$font-h3;
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid v.$gray600;
+        padding: .46em 0;
+        margin: 0 .5em;        
+        & em:hover {
+            color: v.$colorPrimary;
+        }
+        & em {
+            cursor: pointer;
+        }
+        &-p {
+            font-size: v.$font-h5;
+        }
+    }
+    &__info {
+        padding: 5em 0 0 0;
+        font-family: 'Fakt Pro';
+        &-description p {
+            text-align: center;  
+            margin: 0 0 .2em 0;          
+        }
+        &-description {
+            margin: 0 0 3em 0;
+        }
+        &-btn-container {
+            display: flex;
+            justify-content: center;
+        }
+        &-emoji {
+            font-size: v.$font-h2;
+        }
+        &-title {
+            color: v.$colorTitle;
+            font-size: v.$font-h4;
+        }
+       
+        &-btn {
+            background-color: v.$colorPrimary;
+            padding: .5em 1em;
+            font-size: v.$font-body;
+            border-radius: .6em;
+            color: #fff;
+            cursor: pointer;          
+        }
+    }
+}   
+
+@media screen and (max-width: 1024px) {    
+    .nav {
+        display: none;
+    }
+}
+
+// amimaciones
+  
+
+.nav__link-1::before {
+    transform-origin: 50% 100%;
+    transition: clip-path 0.3s, transform 0.3s cubic-bezier(0.2, 1, 0.8, 1);
+    clip-path: polygon(0% 0%, 0% 100%, 0 100%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%, 100% 100%, 100% 0%);
+}
+
+.nav__link-1:hover::before {
+    transform: translate3d(0, 2px, 0) scale3d(1.08, 3, 1);
+    clip-path: polygon(0% 0%, 0% 100%, 50% 100%, 50% 0, 50% 0, 50% 100%, 50% 100%, 0 100%, 100% 100%, 100% 0%);
+}
+
+.nav__link-1 span {
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.2, 1, 0.8, 1);
+}
+
+.nav__link-1:hover span {
+    transform: translate3d(0, -2px, 0);
+}
+
+.nav__link-1::before,
+.nav__link-1::after {
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background: currentColor;
+    top: 100%;
+    left: 0;
+    pointer-events: none;
+}
+
+.nav__link-1::before {
+    content: '';
+    /* show by default */
+}
+
+@media screen and (max-width:480px) {
+    .minicart__icon {
+        margin: .22em 0 0 0;
+        font-size: 1.76em;
+    }
+    .header {                
+        margin: .5em 1rem .5em 1rem;
+        padding: .7em 0;    
+        em  {
+            font-size: 1.2em;
+        }    
+        &__img {
+            &-content {       
+                max-width: 10em;                
+                height: 100%;                
+                img {                   
+                   object-fit: contain;                    
+                }
+            }
+        }
+        &__button-container {            
+            height: 100%;
+            margin: 0 1em 0 0;
+            display: flex;
+            align-items: center;
+            font-size: 1.7em;
+        }
+        &__utilities {            
+            height: 100%;
+            margin: 0;
+            display: flex;
+            &-container {
+                gap: .5em;
+            }
+        }
+    }
+    .minicart__count {
+        font-size: .4em;
+    }
+}

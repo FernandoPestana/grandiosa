@@ -1,0 +1,68 @@
+@use '/src/sass/variables' as v;
+@use '/src/sass/fonts';
+@use '/src/sass/mixins' as m;
+
+.search {
+    &__container {
+        position: fixed;       
+        top: 0;        
+        width: 100%;
+        visibility: hidden;
+        height: 0vh;
+        box-shadow: 0 0 0 100vh rgba(0, 0, 0, 0.3); 
+        transition: all .5s ease;                    
+        z-index: 2;
+        overflow: hidden;
+    &-wrapper {        
+        padding: 2em;    
+        height: 22vh; 
+        background-color: #fff;    
+    }
+    &.isActive {
+        visibility: visible;
+        height: 22vh;                   
+    }
+    }
+    &__title {
+        display: flex;
+        justify-content: space-between;
+        color: v.$gray100;
+        font-family: 'Fakt Pro';
+        font-size: v.$font-h4;
+        margin: 0 0 .3em 0;        
+        & em {
+            cursor: pointer;
+        }
+    }
+    &__form {        
+        display: flex;
+        align-items: center;
+        gap: .2em;
+        width: 100%; 
+        font-size: v.$font-body;  
+        @include m.movil {            
+            margin: 1em 0 0 0;
+            font-size: 1.47em;
+            input {
+                
+                
+            }
+        } 
+        & em {
+            color: v.$gray100;
+        }                     
+        &-input {            
+            outline: 0px;
+            border: none;            
+            width: 45em;
+            padding: .3em 0;
+            color: v.$gray200;                                                           
+            &.isActive {
+                border-bottom: 1px solid v.$gray200;
+            }                    
+            &::placeholder {
+                color: v.$gray600;
+            }
+        }       
+    }
+}

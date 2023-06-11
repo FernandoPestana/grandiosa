@@ -1,0 +1,47 @@
+@use '/src/sass/fonts';
+@use '/src/sass/variables' as v;
+@use '/src/sass/mixins' as m;
+
+.similarProducts {
+    display: flex;        
+    justify-content: center;    
+    &__big {
+        display: flex;
+        flex-direction: column;        
+        width: 80em;
+        margin: 0 1rem ;
+        @include m.tablet {
+            margin: 1em;
+        }
+        @include m.pc {
+            margin: 1rem;
+        }
+    }
+    &__container {                
+        display: grid;
+        gap: 2em;          
+        grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); 
+        margin: 0 0 7em 0;
+        @include m.tablet {
+            grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr)); 
+        }
+    }    
+    &__title {
+        font-size: v.$font-h2;
+        font-family: 'fakt pro';
+        margin: 0 0 2em 0;
+        color: v.$gray100;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width:480px) {
+    .similarProducts {
+        &__container {
+            grid-template-columns: repeat(auto-fill, minmax(8.5rem, 1fr)); 
+        }
+        &__big {
+            margin: 1em;
+        }
+    }
+}

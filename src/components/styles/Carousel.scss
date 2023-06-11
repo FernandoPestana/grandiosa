@@ -1,0 +1,240 @@
+@use '/src/sass/variables' as v;
+@use '/src/sass/fonts';
+@use '/src/sass/mixins' as m;
+
+.slider1 {
+    display: flex;
+    justify-content: center;    
+    z-index: 0;
+    background-color: #fff;  
+     
+    &__container {
+        display: flex;
+        flex-flow: row wrap;       
+        margin: 1rem 1rem 0 1rem;
+        max-width: 70em; 
+        z-index: 0;         
+    }
+    &__info {        
+        width: 50%;
+        margin: 5em 0;
+        hyphens: none; 
+        padding: 1em;        
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        border-radius: 1em;
+        &-span {
+            @include m.movil {
+                display: none;
+            }
+            @include m.tablet {
+                display: none;
+            }
+        }
+        @include m.movil {
+            width: 100%;            
+            margin: 0 2em;
+            order: 2;
+            padding: 0 0 2.5em 0; 
+            box-shadow: none;           
+        }   
+        @include m.tablet {
+            width: 100%;
+            margin: 0 2em;
+            order: 2;
+            padding: 0 0 2.5em 0; 
+            box-shadow: none;
+        }    
+        span {
+            color: v.$gray300;
+            font-size: v.$font-h5;
+        }
+        h3 {            
+            line-height: .97em;
+            font-size: 2.5em;
+            letter-spacing: -1px;
+            margin: .4em 0;
+            width: 72%;
+            @include m.pc {
+                width: 90%;
+            }
+            @include m.movil {
+                width: 100%;
+                font-size: 1.4em;
+                margin: 0;                
+            }
+            @include m.tablet {
+                width: 100%;
+                font-size: 1.4em;
+                margin: 0;  
+            }
+        }
+        p {         
+            margin: 1.7em 0 0 0;   
+            font-size: v.$font-h5;
+            width: 70%;
+            @include m.movil {
+                width: 100%;
+                margin: .8em 0;
+            }
+            @include m.pc {
+                width: 90%;
+            }
+        }
+    }
+    &__img {
+        width: 50%;        
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        @include m.movil {
+            width: 100%;  
+            margin: 0 2em;          
+        }
+        @include m.tablet {
+            width: 100%;  
+            margin: 0 2em; 
+        }
+        img {
+            height: 70%;
+            transform: scale(1.2);            
+        }
+    }
+    &__btn-container {        
+        width: 40%;
+        display: flex;
+        justify-content: center;
+        margin: 1em 0 0 0; 
+        position: relative;                    
+        background-color: #e7e7e7;
+        border: 1px solid v.$colorPrimary;
+        border-radius: .86rem;  
+        span {
+            color: v.$colorPrimary;
+        }
+        @include m.pc {
+            padding: .5em 0;
+        }
+        @include m.movil {
+            padding: .5em 0;
+            width: 100%;  
+            span {
+                font-size: 1.1em;
+            }                    
+            &:active {
+                background-color: v.$colorPrimary;
+                span {
+                    color: #e7e7e7;
+                }
+            }
+        } 
+        @include m.tablet {
+            padding: .5em 0;
+            width: 100%; 
+        }        
+    }
+}
+
+.slider2 {
+    &__img {
+        width: 50%;        
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        @include m.movil {
+            width: 100%;  
+            margin: 0 2em;          
+        }
+        @include m.tablet {
+            width: 100%;  
+            margin: 0 2em; 
+        }
+        img {
+            height: 80%;                       
+        }
+    }
+}
+
+
+@media (hover: hover) {
+    .button5 {
+        cursor: pointer;
+        &:hover {
+            span {
+                color: #e7e7e7;
+            }
+        }
+    }
+    
+    
+.button5--bestia {                                          
+    background: none;  
+    color: v.$colorPrimary;                     
+}
+
+.button5--bestia .button5__bg {
+    top: 0;
+    border: 2px solid v.$colorPrimary;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;                    
+    background: #e7e7e7;
+    border-radius: 0.85rem;
+    overflow: hidden;
+    transition: transform 0.4s cubic-bezier(0.1, 0, 0.3, 1);
+}
+
+.button5--bestia:hover .button5__bg {
+    transform: scale3d(1.06,1.05,1);                    
+}
+
+.button5--bestia .button5__bg::before,
+.button5--bestia .button5__bg::after {
+    content: '';                    
+    position: absolute;
+    background: v.$colorPrimary;
+}
+
+.button5--bestia .button5__bg::before {
+    width: 110%;
+    height: 0;
+    padding-bottom: 110%;
+    top: 50%;                    
+    left: 50%;
+    border-radius: 50%;
+    transform: translate3d(-50%,-50%,0) scale3d(0,0,1);
+}
+
+.button5--bestia:hover .button5__bg::before {
+    transition: transform 0.4s cubic-bezier(0.1, 0, 0.3, 1);
+    transform: translate3d(-50%,-50%,0) scale3d(1,1,1);                    
+}
+
+.button5--bestia .button5__bg::after {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.button5--bestia:hover .button5__bg::after {
+    opacity: 1;
+    transition-duration: 0.01s;
+    transition-delay: 0.3s;
+}
+
+.button5--bestia span {
+    display: block;
+    font-size: 1.3em;
+    position: relative;
+    padding: .4em; 
+    &:hover {
+        color: #e7e7e7;
+    }                 
+}
+}
+
+
+

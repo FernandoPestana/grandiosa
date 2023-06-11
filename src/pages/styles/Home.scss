@@ -1,0 +1,309 @@
+@use '/src/sass/variables' as v;
+@use '/src/sass/fonts';
+@use '/src/sass/mixins' as m;
+
+.home {        
+    &__h1 {        
+        display: flex;
+        justify-content: center;  
+        flex-flow: row wrap;      
+        font-family: 'tenor sans';        
+        font-size: v.$font-h2; 
+        position: relative;
+        height: 100%;    
+        @include m.movil {
+            padding: 2em 0 0 0;
+        }    
+                   
+        &-img {            
+            width: 100%;   
+            height: 100%;
+            object-fit: contain;               
+            &-container {
+                width: 95%;                                         
+            }                                          
+        }
+        
+    }
+    &__card {       
+        &-img {
+            width: 100%;
+            @include m.movil {
+                transform: scale(1.1);
+            }
+            &-container {
+                width: 50%;
+                @include m.movil {
+                    overflow: hidden;
+                }
+                @include m.tablet {
+                    width: 100%;
+                    margin: 0 1em;
+                }
+            }
+        }
+    }
+    &__title {
+        color: v.$gray100;
+        hyphens: none;  
+        margin: 3em 0 0 0;     
+        &-container {
+            position: absolute;          
+            width: 90%;            
+            top: 50%;
+            left: 50%;            
+            transform: translate(-50%, -50%);            
+            height: 100%;  
+            display: flex;
+            flex-direction: column;
+            justify-content: center;  
+            span:nth-child(3) {
+                color: v.$colorPrimary;
+            }     
+            @include m.movil {
+                padding: 0 0 1.5em 0;
+            }
+            @include m.tablet {
+                padding: 0 0 1.5em 0;
+            }
+        }
+    }
+    &__btn {        
+        &-container {
+            display: flex;
+            justify-content: center;
+            margin: 2em 1.5em 0 1.5em;            
+            position: relative;                    
+            background-color: #e7e7e7;
+            border: 1px solid v.$colorPrimary;
+            border-radius: .86rem; 
+            @include m.pc {
+                color: v.$colorPrimary;
+                font-size: .8em;
+                padding: .5em 0;
+            } 
+            @include m.movil {
+                margin: 3em .5em 0 .5em;
+                padding: .2em 0;
+                font-size: v.$font-movil-btn;
+                color: v.$colorPrimary;
+                &:active {
+                    background-color: v.$colorPrimary;
+                    span {
+                        color: #e7e7e7;
+                    }
+                }
+            } 
+            @include m.tablet {
+                @include m.selector;
+                margin: 3em .5em 0 .5em;
+                padding: .7em 0;
+                font-size: v.$font-movil-btn;
+                color: v.$colorPrimary;
+                &:active {
+                    background-color: v.$colorPrimary;
+                    span {
+                        color: #e7e7e7;
+                    }
+                }
+            }                     
+        }
+    }
+    &__section {
+        &-container {
+            display: flex;            
+            justify-content: center; 
+            position: relative;           
+            padding: 4em 1em 0;
+            background-color: #fff;    
+            z-index: 1;        
+        }
+        &-text {
+            color: v.$gray200;
+            font-size: v.$font-h3;
+            font-family: 'fakt pro';
+        }
+    }
+    &__card {
+        &-container {
+            display: flex;
+            justify-content: center;
+            position: relative;
+            background-color: #fff; 
+            z-index: 1;                  
+        }
+        &-content {
+            display: flex;
+            flex-flow: row wrap;
+            margin: 1em 0;            
+            max-width: 70em;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); 
+            @include m.pc {
+                margin: 1rem;
+            }
+            @include m.tablet {
+                box-shadow: none;
+                flex-flow: row wrap;
+                margin: 1rem;
+            }           
+            
+        }
+        &-info {
+           &-container {
+                  width: 50%; 
+                  @include m.tablet {
+                    width: 100%;
+                }                                    
+            }
+        }
+    }
+}
+
+.slide1 {
+    &__container {        
+       height: auto;     
+       width: 100%;  
+       position: sticky;
+       top: 6.9em;  
+       z-index: 0;     
+    }
+    &__img-content {
+        display: flex;        
+        justify-content: center;
+        background-image: url('https://themes.muffingroup.com/be/cosmetics2/wp-content/uploads/2018/11/cos2-slider-bg.jpg');
+        background-size: cover;
+        height: 100%;
+    }
+    &__img {
+        width: 80%;
+        margin: 3em 0;
+    }
+}
+ 
+
+
+.button {
+    cursor: pointer;     
+}
+
+@media (hover: hover) {
+    .button:hover {
+        span {
+            color: #e7e7e7;
+        }
+    }
+    .button--bestia {                    
+        font-size: v.$font-body;                    
+        background: none;  
+        color: v.$colorPrimary;                     
+    }
+    
+    .button--bestia .button__bg {
+        top: 0;
+        border: 2px solid v.$colorPrimary;
+        left: 0;
+        position: absolute;
+        width: 100%;
+        height: 100%;                    
+        background: #e7e7e7;
+        border-radius: 0.85rem;
+        overflow: hidden;
+        transition: transform 0.4s cubic-bezier(0.1, 0, 0.3, 1);
+    }
+    
+    .button--bestia:hover .button__bg {
+        transform: scale3d(1.06,1.05,1);                    
+    }
+    
+    .button--bestia .button__bg::before,
+    .button--bestia .button__bg::after {
+        content: '';                    
+        position: absolute;
+        background: v.$colorPrimary;
+    }
+    
+    .button--bestia .button__bg::before {
+        width: 110%;
+        height: 0;
+        padding-bottom: 110%;
+        top: 50%;                    
+        left: 50%;
+        border-radius: 50%;
+        transform: translate3d(-50%,-50%,0) scale3d(0,0,1);
+    }
+    
+    .button--bestia:hover .button__bg::before {
+        transition: transform 0.4s cubic-bezier(0.1, 0, 0.3, 1);
+        transform: translate3d(-50%,-50%,0) scale3d(1,1,1);                    
+    }
+    
+    .button--bestia .button__bg::after {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+    
+    .button--bestia:hover .button__bg::after {
+        opacity: 1;
+        transition-duration: 0.01s;
+        transition-delay: 0.3s;
+    }
+    
+    .button--bestia span {
+        display: block;
+        position: relative;
+        padding: .7em 1em; 
+        &:hover {
+            color: #e7e7e7;
+        }                 
+    }
+}               
+
+
+@media screen and (max-width:480px) {
+    .home {
+        &__card {
+            &-content {
+                margin: 0 1rem;
+                box-shadow: none;
+            }
+            &-info-container {
+                width: 100%;
+                
+                
+            }
+            &-img-container {
+                width: 100%;
+                margin: 1em;
+            }
+        }
+        &__btn-container {            
+            margin: 2em 0 ;
+        }
+        &__title-container {            
+            margin: 1em 0 0 0;            
+        }
+    }
+    .button {
+        padding: .5em 0;
+    }
+    .slide1 {
+        &__container {           
+            height: 42vh;
+            overflow: hidden;
+        }
+        &__img-content {
+            background-size: 140%;
+            background-position: center center;
+            transform: scale(1.2);
+            
+            img {
+                width: 100%;
+                object-fit: contain;
+            }
+        }
+    }
+}

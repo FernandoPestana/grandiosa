@@ -1,0 +1,131 @@
+@use '/src/sass/variables' as v;
+@use '/src/sass/fonts';
+@use '/src/sass/mixins' as m;
+
+.footer {
+    display: flex;   
+    margin: 0 1rem;
+    @include m.movil {
+        @include m.selector;
+    }
+    @include m.tablet {
+        @include m.selector;
+        flex-flow: row wrap;
+    }
+    @include m.pc {
+        margin: 0 1rem;
+    }       
+    width: 73em;    
+    &__container {
+        display: flex;        
+        justify-content: center;
+        background-color: v.$colorFooter;        
+    }
+    &__section1 {
+        width: 50%;
+        margin: 2em 0;   
+        @include m.tablet {
+            width: 100%;            
+        } 
+    }
+    &__section2 {
+        padding: 2em 0;
+        display: flex;
+        color: v.$gray300; 
+        width: 100%;                     
+        font-family: 'fakt pro';  
+        margin: 2em 0; 
+        @include m.tablet {
+            margin: 0 0 1em 0;
+            padding: 0;
+            width: 100%; 
+            justify-content: space-between;            
+        }   
+        &-title {            
+            font-weight: 600;
+            color: v.$gray200;
+            margin: 0 0 1em 0;
+            border-bottom: 1px solid v.$gray400;            
+            padding: 1em 0;
+            width: 100%;
+        }
+        &-container {
+            display: flex;
+            width: 50%;
+            justify-content: center;
+            & p {
+                margin: .5em 0;
+            }   
+            @include m.tablet {
+                justify-content: space-between;
+            }
+        }     
+    }
+    &__info {
+        @include m.tablet {
+            width: 80%;
+        }
+    }
+    &__contact {
+        width: 50%;  
+        @include m.tablet {            
+            width: 80%;
+        }      
+    }
+    &__img-container {                        
+        padding: 1em 1em 0 0;
+        img {
+            width: 100%;
+            object-fit: contain;
+        }
+        @include m.tablet {
+            width: 70%;
+        }
+    }
+    &__social {
+        &-container {
+            display: flex;
+            gap: .4em;            
+            padding: 0 0 0 .45em;
+            margin: 1em 0 0 0;
+            & em {
+                font-size: 1.5em;
+                color: #fff;                                
+            }
+            @include m.tablet {
+                gap: .9em;
+            }
+        }
+        &-logo {            
+            padding: .3em;
+            display: flex;
+            background-color: #a0a0a0cc;
+            border-radius: .3em;  
+            @include m.movil {
+                padding: .7em;
+            }          
+        }
+    }
+}
+
+@media screen and (max-width:480px) {
+    .footer{ 
+        flex-flow: row wrap;
+        margin: 0 1rem;
+        &__section1 {            
+            width: 100%;   
+            margin: 0;                     
+            img {
+                width: 90%;                
+            }
+        }
+        &__social-container {
+            gap: .9em;
+                       
+        }        
+        &__section2 {            
+            margin: 1.5em 0;
+            gap: 2.5em;           
+        }
+    }
+}
